@@ -1,0 +1,45 @@
+body {
+    background-image: url("../public/BG2.jpg");
+    background-position: center;
+    background-size:cover ;
+    background-repeat: no-repeat;
+    min-height: 100vh;  
+    overflow: hidden;
+    color: black;
+     font-family: "Marcellus", serif;
+  font-weight: 400;
+  font-style: normal;
+  
+}
+
+.quizBox{
+    
+transform: translate(600px,15%);
+font-size: 22px;
+background-color: #fdfdfd;
+width: 500px;
+padding: 20px;
+border-radius: 22px;
+
+}
+
+h3{
+    text-align: center;
+}
+.option-label {
+  display: flex;
+  margin: 8px 0;
+  font-size: 26px;
+  cursor: pointer;
+
+}
+
+input[type="radio"] {
+  margin-right: 8px;
+}
+
+
+.actions{
+    display: flex;
+    justify-content: space-around;
+}
