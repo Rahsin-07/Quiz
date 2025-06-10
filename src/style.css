@@ -4,7 +4,7 @@ body {
     background-size:cover ;
     background-repeat: no-repeat;
     min-height: 100vh;  
-    overflow: hidden;
+    /* overflow: hidden; */
     color: black;
      font-family: "Marcellus", serif;
   font-weight: 400;
@@ -12,7 +12,7 @@ body {
   
 }
 
-.quizBox{
+.questions{
     
 transform: translate(600px,15%);
 font-size: 22px;
@@ -21,6 +21,25 @@ width: 500px;
 padding: 20px;
 border-radius: 22px;
 
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.header h5{
+  background-color: black;
+  color: white;
+  padding: 5px;
+  border-radius: 12px;
+ 
+}
+.time-up{
+  background-color: red;
+  color: black;
+  padding: 5px;
+  border-radius: 12px;
 }
 
 h3{
@@ -42,4 +61,22 @@ input[type="radio"] {
 .actions{
     display: flex;
     justify-content: space-around;
+}
+
+.scorecard{
+ 
+  background-color: black;
+  color: white;
+  margin: 20px;
+  padding: 20px;
+  /* transform: translate(-250px,-250px); */
+  border-radius: 22px;
+  width: 700px;
+ transform: translate(300px,0px);
+}
+
+.result-btn{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
