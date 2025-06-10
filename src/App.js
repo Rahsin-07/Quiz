@@ -196,7 +196,9 @@ const handleAnswerCheck = () => {
              <button
   className="btn btn-primary"
   onClick={handleNext}
-  disabled={!selectedAnswers[currentQ]}
+  disabled={!selectedAnswers[currentQ] || !running}
+
+  
 >
   {currentQ === questions.length - 1 ? 'Finish' : 'Next'}
 </button>
