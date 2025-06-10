@@ -134,6 +134,7 @@ const handleAnswerCheck = () => {
       setRunning(false);
       alert("Time's up!");
        setShowResult(true); 
+      //  this goto result page
     }
 
     return () => clearInterval(interval);
