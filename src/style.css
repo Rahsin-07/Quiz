@@ -65,8 +65,8 @@ input[type="radio"] {
 
 .scorecard{
  
-  background-color: black;
-  color: white;
+  background-color: #FFFFF0;
+  color: black;
   margin: 20px;
   padding: 20px;
   /* transform: translate(-250px,-250px); */

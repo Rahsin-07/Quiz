@@ -63,10 +63,10 @@ function App() {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [showResult, setShowResult] = useState(false);
    const [buttonName, setButtonName] = useState('Show Result');
-     const [minutes, setMinutes] = useState(1);
+     const [minutes, setMinutes] = useState(2);
    const [seconds, setSeconds] = useState(0);
       const [running, setRunning] = useState(false);
- 
+
 
 
 
@@ -134,7 +134,7 @@ const handleAnswerCheck = () => {
       setRunning(false);
       alert("Time's up!");
        setShowResult(true); 
-      //  this goto result page
+     
     }
 
     return () => clearInterval(interval);
@@ -142,6 +142,7 @@ const handleAnswerCheck = () => {
 
   const handleStart = () => {
     if (!running) setRunning(true);
+    
   };
 
   const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
@@ -157,18 +158,13 @@ const handleAnswerCheck = () => {
           <div className="questions">
             <div className='header'>
                <h3>
-              Question {currentQ + 1} of {questions.length}
-            </h3>
+                Question {currentQ + 1} of {questions.length}
+               </h3>
 
-           <h5>
-  <ImStopwatch style={{ position: 'relative', top: '-2px' }} /> :{formattedTime} </h5>
-
-
-
-
-
-              
-               </div>
+               <h5>
+                <ImStopwatch style={{ position: 'relative', top: '-2px' }} /> {formattedTime} </h5>
+    
+            </div>
            
             <p style={{ fontWeight: "bolder" }}>{questions[currentQ].question}</p>
 
@@ -189,7 +185,7 @@ const handleAnswerCheck = () => {
             </div>
 
             <div className="actions">
-              <button onClick={handlePrev} disabled={currentQ === 0} type="button" className="btn btn-primary">
+              <button  style={{ display: !running || currentQ < 1 ? "none" : "block" }}onClick={handlePrev} disabled={currentQ === 0} type="button" className="btn btn-primary" id='prev'>
                 Prev
               </button>
               <button className='btn btn-success' onClick={handleStart} disabled ={running}> Start </button>
@@ -197,7 +193,8 @@ const handleAnswerCheck = () => {
   className="btn btn-primary"
   onClick={handleNext}
   disabled={!selectedAnswers[currentQ] || !running}
-
+              id='next'
+              style={{ display: !running ? "none" : "block" }}
   
 >
   {currentQ === questions.length - 1 ? 'Finish' : 'Next'}
@@ -207,7 +204,7 @@ const handleAnswerCheck = () => {
           </div>
         ) : (
           <div className="scorecard">
-            <h2>
+            <h2 style={{textAlign:"center",fontWeight:"bolder"}}>
               You  Scored {percentage}%
             </h2>
             <p style={{ textAlign: "center" }}>
@@ -224,16 +221,23 @@ const handleAnswerCheck = () => {
                   
                   <p>
                     <strong>Options:</strong>{' '}
+
                     {q.options.map((opt, i) => (
-                      <span
-                        key={i}
-                        style={{
-                          color: opt === q.answer ? 'green' : 'white',
-                          fontWeight: opt === q.answer ? 'bold' : 'normal',
-                        }}
-                      >
-                        {opt}{i < q.options.length - 1 ? ' | ' : ''}
-                      </span>
+                     <span
+  key={i}
+  style={{
+    color: opt === q.answer
+      ? "green" 
+      : selectedAnswers[idx] !== q.answer && selectedAnswers[idx] === opt
+      ? "red" 
+      : "black", 
+    fontWeight: opt === q.answer ? "bold" : "normal", // Bold for correct answer
+    display: "flex",
+  }}
+>
+  {opt}
+</span>
+
                     ))}
                   </p>
                   <p>
@@ -257,7 +261,7 @@ const handleAnswerCheck = () => {
                     </>
                   )}
                   </p>
-                  <div style={{borderBottom:"1px solid white"}}> </div>
+                  <div style={{borderBottom:"1px solid black"}}> </div>
                  </div>
               ))}
 
@@ -287,6 +291,5 @@ const handleAnswerCheck = () => {
 }
 
 export default App;
-
 
 
